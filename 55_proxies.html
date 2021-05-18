@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Nuevos Tipos y Características -Proxies-</title>
+	</head>
+	<body>
+		<h1>Nuevos Tipos y Características -Proxies-</h1>
+		<script>
+			//Objeto Original
+			const persona = {
+				nombre: "",
+				apellido: "",
+				edad: 0,
+			};
+
+			/* Manejador  (Handler)*/
+			const manejador = {
+				set(obj, prop, valor) {
+					//restringiendo el objeto original
+					if (Object.keys(obj).indexOf(prop) === -1) {
+						return console.error(
+							`La propiedad "${prop}" no existe en el objeto Original (Persona)`
+						);
+					}
+
+					if (
+						(prop === "nombre" || prop === "apellido") &&
+						!/^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$/g.test(valor)
+					) {
+						return console.error(
+							`La propiedad "${prop}" sólo acepta letras y espacios en blanco`
+						);
+					}
+
+					obj[prop] = valor;
+				},
+			};
+
+			const jon = new Proxy(persona, manejador);
+			jon.nombre = "Oswaldo";
+			jon.apellido = "Alonzo";
+			jon.edad = 42;
+			jon.twitter = "@valitogt79";
+			console.log(jon);
+			console.log(persona);
+		</script>
+	</body>
+</html>

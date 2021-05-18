@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Nuevos Tipos y Características WeakSets & WeakMaps</title>
+	</head>
+	<body>
+		<h1>Nuevos Tipos y Características WeakSets & WeakMaps</h1>
+		<script>
+			const ws = new WeakSet();
+			let valor1 = { valor1: 1 };
+			let valor2 = { valor2: 2 };
+			let valor3 = { valor3: 3 };
+
+			ws.add(valor1);
+			ws.add(valor2);
+			console.log(ws);
+
+			/* Verificando si existe referencia */
+			console.log(ws.has(valor1));
+			console.log(ws.has(valor3));
+
+			/* Eliminar un elemento en particular */
+			ws.delete(valor2);
+			console.log(ws);
+
+			ws.add(valor2);
+			ws.add(valor3);
+			console.log(ws);
+
+			/* Comprobar las referencias deviles al nulificar las referencais */
+			/* setInterval(() => console.log(ws), 1000);
+
+			setTimeout(() => {
+				valor1 = null;
+				valor2 = null;
+				valor3 = null;
+			}, 5000); */
+
+			const wm = new WeakMap();
+			let llave1 = {};
+			let llave2 = {};
+			let llave3 = {};
+
+			wm.set(llave1, 1);
+			wm.set(llave2, 2);
+			console.log(wm);
+
+			/* Verificando si existe referencia */
+			console.log(wm.has(llave1));
+			console.log(wm.has(llave3));
+
+			/* Obtener los valores de una referencia o llave */
+			console.log(wm.get(llave1));
+			console.log(wm.get(llave2));
+			console.log(wm.get(llave3));
+
+			/* Eliminar un elemento en particular */
+			wm.delete(llave2);
+			console.log(wm);
+
+			/* Estableciendo los 3 valores nuevamente */
+			wm.set(llave2, 2);
+			wm.set(llave3, 3);
+			console.log(ws);
+
+			/* Comprobar las referencias deviles al nulificar las referencais */
+
+			setInterval(() => console.log(wm), 1000);
+			setTimeout(() => {
+				llave1 = null;
+				llave2 = null;
+				llave3 = null;
+			}, 5000);
+		</script>
+	</body>
+</html>

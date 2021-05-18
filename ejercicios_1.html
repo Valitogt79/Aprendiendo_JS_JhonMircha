@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios de Lógica</title>
+  </head>
+  <body>
+    <p>
+      1) Programa una función que cuente el número de caracteres de una cadena
+      de texto, pe. miFuncion("Hola Mundo") devolverá 10.
+    </p>
+    <script>
+      const cadena = prompt(
+        'Ingresa una palabra o frase, para contar los caracteres'
+      );
+
+      const contarCaracteres = (cadena = '') =>
+        !cadena
+          ? console.warn('No ingresaste ninguna palabra o cadena de texto')
+          : console.info(
+              `La cadena "${cadena}" tiene ${cadena.length} caracteres`
+            );
+
+      contarCaracteres(cadena);
+    </script>
+
+    <p>
+      2) Programa una función que te devuelva el texto recortado según el número
+      de caracteres indicados, pe. miFuncion("Hola Mundo", 4) devolverá "Hola".
+    </p>
+
+    <script>
+      const cadena1 = prompt('Ingresa una palabra o frase'),
+        recortar = prompt('Cuantos caracteres quieres recortar');
+
+      const cadenaRecortar = (cadena1 = '', recortar = '') =>
+        !cadena
+          ? console.warn('No ingresaste ningun palabra o frase')
+          : !recortar
+          ? console.warn('No se indico los caracteres a recortar')
+          : console.info(
+              `se quitaron ${recortar} caracteres y la nueva cadena es ${cadena1.slice(
+                0,
+                recortar
+              )}`
+            );
+
+      cadenaRecortar(cadena1, recortar);
+    </script>
+
+    <p>
+      3) Programa una función que dada una String te devuelva un Array de textos
+      separados por cierto caracter, pe. miFuncion('hola que tal', ' ')
+      devolverá ['hola', 'que', 'tal'].
+    </p>
+
+    <script>
+      const cadena2 = prompt('Ingresa una palabra o frase'),
+        separador = prompt('Ingresa el separador');
+
+      const cadenaAArreglo = (cadena2 = '', separador = '') =>
+        !cadena2
+          ? console.warn('No ingresaste ningun palabra o frase')
+          : !separador
+          ? console.warn('No se indico el separador')
+          : console.info(
+              `el Arreglo queda de la siguiente forma ${cadena2.split(
+                separador
+              )}`
+            );
+
+      cadenaAArreglo(cadena2, separador);
+    </script>
+
+    <p>
+      4) Programa una función que repita un texto X veces, pe. miFuncion('Hola
+      Mundo', 3) devolverá Hola Mundo Hola Mundo Hola Mundo.
+    </p>
+    <script>
+      const texto = prompt('Ingresa un texto'),
+        veces = prompt('Ingresa numero de veces a repetir el texto'),
+        repetirTexto = (texto = '', veces = '') => {
+          if (!texto) return console.warn('no ingresaste un texto');
+
+          if (!veces)
+            return console.warn(
+              'No ingresaste el numero de veces a repetir el texto'
+            );
+
+          if (Math.sign(veces) === 0)
+            return console.error('El número de veces no puede ser 0');
+
+          if (Math.sign(veces) === -1)
+            return console.error('El número de veces no pude ser negativo');
+
+          for (let i = 1; i <= veces; i++) console.info(`${texto}, ${i}`);
+        };
+
+      repetirTexto(texto, veces);
+    </script>
+  </body>
+</html>

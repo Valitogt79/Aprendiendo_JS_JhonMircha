@@ -1,0 +1,11 @@
+{
+  "cadena": "Oswaldo",
+	"numero": "41",
+	"booleano": "true",
+	"arreglo": ["correr", "programar", "cocinar"],
+	"objeto": {
+		"twitter": "@valitogt79",
+		"email": "oswalonzo@hotmail.com"
+		},
+	"nulo": "null"
+}

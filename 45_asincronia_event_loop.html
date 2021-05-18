@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Asincronía y el Event Loop</title>
+	</head>
+	<body>
+		<h1>Asincronía y el Event Loop</h1>
+		<script>
+			/* Código Sícrono Bloqueante */
+			(() => {
+				console.log("Código Síncrono");
+				console.log("Inicio");
+
+				function dos() {
+					console.log("Dos");
+				}
+
+				function uno() {
+					console.log("Uno");
+					dos();
+					console.log("Tres");
+				}
+
+				uno();
+				console.log("Fin");
+			})();
+
+			console.log("**********************");
+
+			/* Código  asíncrono No Bloqueante*/
+			(() => {
+				console.log("Código asíncrono");
+				console.log("inicio");
+
+				function dos() {
+					setTimeout(function () {
+						console.log("Dos");
+					}, 1000);
+				}
+
+				function uno() {
+					setTimeout(function () {
+						console.log("Uno");
+					}, 0);
+					dos();
+					console.log("Tres");
+				}
+				uno();
+				console.log("Fin");
+			})();
+		</script>
+	</body>
+</html>

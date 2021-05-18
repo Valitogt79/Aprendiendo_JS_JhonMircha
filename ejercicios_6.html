@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios de Lógica 6</title>
+  </head>
+  <body>
+    <h1>Ejercicios de Lógica 6</h1>
+    <p>
+      18) Programa una función que dada una cadena de texto cuente el número de
+      vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4,
+      Consonantes: 5.
+    </p>
+
+    <script>
+      const contarLetras = (cadena = '') => {
+        if (!cadena) return console.warn('No ingresaste una cadena de texto');
+
+        if (typeof cadena !== 'string')
+          return console.error(
+            `El valor "${cadena}" ingresado, NO es una cadena de texto`
+          );
+
+        let vocales = 0,
+          consonantes = 0;
+
+        cadena = cadena.toLocaleLowerCase();
+
+        for (let letra of cadena) {
+          if (/[aeiouáéíóúü]/.test(letra)) vocales++;
+
+          if (/[bcdfghjklmnñpqrstvwxyz]/.test(letra)) consonantes++;
+        }
+
+        return console.info({
+          cadena,
+          vocales,
+          consonantes,
+        });
+      };
+
+      contarLetras();
+      contarLetras(3);
+      contarLetras('Hola Mundo');
+      contarLetras('ñoño');
+      contarLetras(
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia dicta facilis optio vel mollitia nemo ratione blanditiis, veniam amet at? Suscipit, fugiat eveniet at maiores corporis tempore deserunt dolor fuga!'
+      );
+    </script>
+
+    <p>
+      19) Programa una función que valide que un texto sea un nombre válido, pe.
+      miFuncion("Jonathan MirCha") devolverá verdadero.
+    </p>
+
+    <script>
+      const validarNombre = (nombre = '') => {
+        if (!nombre) return console.warn('No ingresaste una cadena de texto');
+
+        if (typeof nombre !== 'string')
+          return console.error(
+            `El valor "${nombre}" ingresado, NO es una cadena de texto`
+          );
+
+        let expReg = /^[A-Za-zÑñáéíóúüÁÉÍÓÚÜ\s]+$/g.test(nombre);
+        return expReg
+          ? console.info(`${nombre}, es un nombre válido`)
+          : console.warn(`${nombre}, No es un nombre válido`);
+      };
+
+      validarNombre();
+      validarNombre(3);
+      validarNombre('Oswaldo');
+      validarNombre('Oswaldo Alonzo');
+      validarNombre('Oswaldo Alonzo, 35');
+    </script>
+    <p>
+      20) Programa una función que valide que un texto sea un email válido, pe.
+      miFuncion("jonmircha@gmail.com") devolverá verdadero.
+    </p>
+    <script>
+      const validarCorreo = (email = '') => {
+        if (!email) return console.warn('No ingresaste un email');
+
+        if (typeof email !== 'string')
+          return console.error(
+            `El valor "${email}" ingresado, NO es una cadena de texto`
+          );
+
+        let expReg = /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(
+          email
+        );
+
+        return expReg
+          ? console.info(`"${email}", es un email válido`)
+          : console.warn(`"${email}", NO es un email válido`);
+      };
+
+      validarCorreo();
+      validarCorreo(34);
+      validarCorreo('oswaldo,alonzo,79@gmail');
+      validarCorreo('oswaldo.alonzo@gmail.com');
+      validarCorreo('oswaldoalonzo@gmail.com');
+    </script>
+
+    <p>Fusión 19 y 20</p>
+    <script>
+      const validarPatron = (cadena = '', patron = undefined) => {
+        if (!cadena)
+          return console.warn('No ingresaste una cadena de texto a evaluar');
+
+        if (typeof cadena !== 'string')
+          return console.error(
+            `El valor "${cadena}" ingresado, NO es una cadena de texto`
+          );
+        if (patron === undefined)
+          return console.warn('No ingresaste una patron a evaluar');
+
+        if (!(patron instanceof RegExp))
+          return console.error(
+            `El valor "${patron}" ingresado, NO es una expresión regular`
+          );
+
+        let expReg = patron.test(cadena);
+
+        return expReg
+          ? console.info(`"${cadena}", cumple con el patrón ingresado`)
+          : console.warn(`"${cadena}", NO cumple con el patrón ingresado`);
+      };
+
+      validarPatron();
+      validarPatron({});
+      validarPatron('hola mundo');
+      validarPatron('hola mundo', 'hola');
+      validarPatron('hola mundo', 1, 2, 3);
+      validarPatron('oswaldo Alonzo', /^[A-Za-zÑñáéíóúüÁÉÍÓÚÜ\s]+$/g);
+      validarPatron('oswaldo alonzo 41', /^[A-Za-zÑñáéíóúüÁÉÍÓÚÜ\s]+$/g);
+      validarPatron(
+        'oswaldo.alonzo@gmail.com',
+        /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i
+      );
+      validarPatron(
+        'oswaldo.alonzo@gmail',
+        new RegExp(
+          '/[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/',
+          'i'
+        )
+      );
+
+      validarPatron(
+        'oswaldo.alonzo@gmail.com',
+        new RegExp(
+          '[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})',
+          'i'
+        )
+      );
+    </script>
+  </body>
+</html>

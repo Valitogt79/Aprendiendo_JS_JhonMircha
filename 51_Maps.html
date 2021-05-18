@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Nuevos Tipos y Características - Map -</title>
+	</head>
+	<body>
+		<h1>Nuevos Tipos y Características - Map -</h1>
+		<script>
+			//Metodo Map()
+			const mapa = new Map();
+
+			//agegar valores
+			mapa.set("nombre", "oswaldo");
+			mapa.set("Apellido", "Alonzo");
+			mapa.set("edad", 41);
+
+			console.log(mapa);
+			console.log(mapa.size);
+			console.log(mapa.has("correo"));
+			console.log(mapa.has("nombre"));
+			console.log(mapa.get("nombre"));
+
+			//sobreescribiendo el valores
+			mapa.set("nombre", "Oswaldo Alonzo");
+			console.log(mapa.get("nombre"));
+
+			//Eliminar propiedad
+			mapa.delete("Apellido");
+			console.log(mapa);
+
+			//generar llaves que no sean cadenas de texto
+			mapa.set(19, "diecinueve");
+			mapa.set(false, "falso");
+			mapa.set({}, {});
+
+			//Recorrer el mapa de
+			for (let [key, value] of mapa) {
+				console.log(`Llave: ${key}, Valor: ${value}`);
+			}
+
+			// inicializando valores en un mapa
+			const mapa2 = new Map([
+				["nombre", "Lukas"],
+				["edad", 1],
+				["animal", "perro"],
+				[null, "nulo"],
+			]);
+			console.log(mapa2);
+
+			const llavesMapa2 = [...mapa2.keys()];
+			const valoresMapa2 = [...mapa2.values()];
+
+			console.log(llavesMapa2);
+			console.log(valoresMapa2);
+		</script>
+	</body>
+</html>

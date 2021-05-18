@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrow Function</title>
+  </head>
+  <body>
+    <h1>Arrow Function</h1>
+    <script>
+      const saludar = function () {
+        console.log('hola');
+      };
+      saludar();
+
+      /* Arrow function  */
+      const saludo = () => console.log('hola');
+      saludo();
+
+      const saludar1 = (nombre) => console.log(`hola ${nombre}`);
+      saludar1('oswaldo');
+
+      const sumar = function (a, b) {
+        return a + b;
+      };
+      console.log(sumar(8, 9));
+
+      const sumar1 = (a, b) => a + b;
+      console.log(sumar1(9, 9));
+
+      const funcionDeVariasLineas = () => {
+        console.log('Uno');
+        console.log('Dos');
+        console.log('Tres');
+      };
+      funcionDeVariasLineas();
+
+      const numeros = [1, 2, 3, 4, 5];
+      numeros.forEach((el, index) =>
+        console.log(`El Elemento ${el} esta en la posición ${index}`)
+      );
+
+      /* Otra Caracteristica 
+      this, en este caso toma el elmento Window*/
+
+      function Perro() {
+        console.log(this);
+      }
+
+      Perro();
+
+      /* en el caso de un objeto, al utilizar this toma el el objeto como tal */
+      const perro1 = {
+        nombre: 'Oswaldo',
+        ladrar: function () {
+          console.log(this);
+        },
+      };
+
+      perro1.ladrar();
+
+      /* Si se trasforma el metodo a una funcion flecha, el objeto this ya no es el objeto, vuele a tener  el elemetno window  */
+      const perro2 = {
+        nombre: 'Oswaldo',
+        ladrar: () => {
+          console.log(this);
+        },
+      };
+
+      perro2.ladrar();
+
+      /* OJO no es una buena practica crear una arrow function dentro de un metodo */
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>JSON JavaScript Object Notation</title>
+	</head>
+	<body>
+		<h1>JSON JavaScript Object Notation</h1>
+		<script>
+			/* JSON JavaScript Object Notation */
+			const json = {
+				cadena: "Oswaldo",
+				numero: 41,
+				booleano: true,
+				arreglo: ["correr", "programar", "cocinar"],
+				objeto: {
+					twitter: "@valitogt79",
+					email: "oswalonzo@hotmail.com",
+				},
+				nulo: null,
+			};
+
+			console.log(json);
+			// JSON.parse("")  -- con comillas
+			console.log(JSON);
+			console.log(JSON.parse("{}"));
+			console.log(JSON.parse("[1,2,3]"));
+			console.log(JSON.parse("true"));
+			console.log(JSON.parse("false"));
+			console.log(JSON.parse("19"));
+			//console.log(JSON.parse("Hola Mundo"));
+			console.log(JSON.parse("null"));
+			//console.log(JSON.parse("undefined"));
+
+			// JSON.stringify() -- sin comillas
+			console.log(JSON.stringify({}));
+			console.log(JSON.stringify([1, 2, 3]));
+			console.log(JSON.stringify(true));
+			console.log(JSON.stringify(false));
+			console.log(JSON.stringify(19));
+			console.log(JSON.stringify(null));
+			console.log(JSON.stringify(undefined));
+			console.log(JSON.stringify({ x: 2, y: 3 }));
+
+			console.log(JSON.stringify(json));
+
+			console.log(
+				JSON.parse(
+					'"cadena": "Oswaldo","numero": "41","booleano": "true","arreglo": ["correr", "programar", "cocinar"],"objeto": {"twitter": "@valitogt79","email": "oswalonzo@hotmail.com"},"nulo": "null"'
+				)
+			);
+		</script>
+	</body>
+</html>

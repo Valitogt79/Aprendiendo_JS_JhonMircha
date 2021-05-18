@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Métodos Estáticos, Getters y Setters</title>
+  </head>
+  <body>
+    <h1>Métodos Estáticos, Getters y Setters</h1>
+    <script>
+      //OJO las clases no reciben parametros como lo hacen las funciones.
+      class Animal {
+        //los parametros se pasan a travez de un constructor.
+        constructor(nombre, genero) {
+          //Atributos
+          this.nombre = nombre;
+          this.genero = genero;
+        }
+        //Los metodos se pueden dejar dentro de la clase, a diferencia del prototipo
+        sonar() {
+          console.log('Hago sonidos por que estoy vivo');
+        }
+        saludar() {
+          console.log(`Hola me llamo ${this.nombre}`);
+        }
+      }
+
+      class Perro extends Animal {
+        constructor(nombre, genero, tamanio) {
+          //Super() es un metodo que manda a llamar el constrictor de las clase padre
+          super(nombre, genero);
+          this.tamanio = tamanio;
+          this.raza = null;
+        }
+
+        sonar() {
+          console.log('Soy un perro y mi sonido es un ladrido');
+        }
+        ladrar() {
+          console.log('Guauuuu Guauuuuu!!!!');
+        }
+
+        //Un método estático se pueden ejecutar sin necesidad de instaciar la clase.
+        static queEres() {
+          console.log(
+            'Los Perros somos animales mamiferos que pertenecemos a la familia de los caninos. Somos considerados los mejores amigos del hombre.'
+          );
+        }
+
+        //Los Setter y Getters son métodos especiales que nos permiten establecere y obtener los valores de atributos de nuestra clase.
+        get getRaza() {
+          return this.raza;
+        }
+
+        set setRaza(raza) {
+          this.raza = raza;
+        }
+      }
+
+      Perro.queEres();
+
+      const mimi = new Animal('mimi', 'Hembra');
+      const scooby = new Perro('Scooby', 'macho', 'Gigante');
+
+      console.log(mimi);
+      mimi.saludar();
+      mimi.sonar();
+
+      console.log(scooby);
+      scooby.saludar();
+      scooby.sonar();
+      scooby.ladrar();
+      console.log(scooby.getRaza);
+      scooby.setRaza = 'Grán Danés';
+      console.log(scooby.getRaza);
+    </script>
+  </body>
+</html>

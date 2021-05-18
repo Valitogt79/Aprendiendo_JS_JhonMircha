@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Nuevos Tipos y Características Iterables & Iterators</title>
+	</head>
+	<body>
+		<h1>Nuevos Tipos y Características -Iterables & Iterators-</h1>
+		<script>
+			const iterable = [1, 2, 3, 4, 5];
+			//const iterable="Hola Mundo";
+			//const iterable= new Set([1,2,3,4,5]);
+			//const iterable = new Map([["Nombre", "Oswaldo"],["edad", 42]]);
+
+			/* Acceder  al iterador de la variable iterable*/
+			const iterador = iterable[Symbol.iterator]();
+			console.log(iterable);
+			console.log(iterador);
+
+			/* Recorriendo el interador */
+			/* console.log(iterador.next());
+					console.log(iterador.next());
+					console.log(iterador.next());
+					console.log(iterador.next());
+					console.log(iterador.next());
+					console.log(iterador.next());
+			*/
+			/* Recodiendo el interador con un ciclo */
+			let next = iterador.next();
+			while (!next.done) {
+				console.log(next.value);
+				next = iterador.next();
+			}
+		</script>
+	</body>
+</html>
