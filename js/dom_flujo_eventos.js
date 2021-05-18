@@ -9,12 +9,15 @@ function flujoEventos(e) {
 console.log($divsEventos);
 
 $divsEventos.forEach((div) => {
-	//*Fase de Burbuja,
+	//*Fase de Burbuja interno externo,
 	//div.addEventListener("click", flujoEventos, false);
 
-	//* Fase de Captura
+	//* Fase de burbuja externo interno
 	//div.addEventListener("click", flujoEventos, true);
 
-	//*
-	div.addEventListener("click", flujoEventos, true);
+	//* Fase de Captura
+	div.addEventListener("click", flujoEventos, {
+		capture: false, //! se puede utilizar  la burbujas.
+		once: true, //! esto permiete que solo se ejecute una vez.
+	});
 });
