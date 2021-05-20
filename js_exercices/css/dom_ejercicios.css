@@ -73,6 +73,7 @@ img {
 	width: 100%;
 	background-color: var(--second-modal-color);
 	opacity: 0;
+	visibility: hidden;
 	transition: transform 0.3s, opacity 0.5s ease;
 	/** Desplazamiento del menu desde arriba */
 	/* 	transform: translate(0, -100%);
@@ -88,6 +89,7 @@ img {
 .panel.is-active {
 	/* 	transform: translate(0, 0);*/
 	opacity: 1;
+	visibility: visible;
 }
 
 .panel-btn {
