@@ -2,6 +2,7 @@ import hamburgerMenu from "./menu_hamburguesa.js";
 import { digitalClock, alarm } from "./reloj.js";
 import { moveBall, shortcuts } from "./teclado.js";
 import countdown from "./cuenta_regresiva.js";
+import scrollTopButton from "./boton_scroll.js";
 
 const d = document;
 
@@ -14,6 +15,7 @@ d.addEventListener("DOMContentLoaded", (e) => {
     "Feb 13, 2022 19:00:00",
     "Feliz Cumpleaños Amigo y Docente Digital 🤓"
   );
+  scrollTopButton(".scroll-top-btn");
 });
 
 /* keydown - cuando se presiona la tecla
