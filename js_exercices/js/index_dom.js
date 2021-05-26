@@ -1,6 +1,7 @@
 import hamburgerMenu from "./menu_hamburguesa.js";
 import { digitalClock, alarm } from "./reloj.js";
 import { moveBall, shortcuts } from "./teclado.js";
+import countdown from "./cuenta_regresiva.js";
 
 const d = document;
 
@@ -8,6 +9,11 @@ d.addEventListener("DOMContentLoaded", (e) => {
   hamburgerMenu(".panel-btn", ".panel", ".menu a");
   digitalClock("#reloj", "#activar-reloj", "#desactivar-reloj");
   alarm("assets/alarma.mp3", "#activar-alarma", "#desactivar-alarma");
+  countdown(
+    "countdown",
+    "Feb 13, 2022 19:00:00",
+    "Feliz Cumpleaños Amigo y Docente Digital 🤓"
+  );
 });
 
 /* keydown - cuando se presiona la tecla
