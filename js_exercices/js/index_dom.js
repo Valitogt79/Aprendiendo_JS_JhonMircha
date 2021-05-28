@@ -17,14 +17,15 @@ d.addEventListener("DOMContentLoaded", (e) => {
     "Feliz Cumpleaños Amigo y Docente Digital 🤓"
   );
   scrollTopButton(".scroll-top-btn");
-  darkTheme(".dark-theme-btn", "dark-mode");
 });
 
 /* keydown - cuando se presiona la tecla
-	 keyup  - cuando se suelta la tecla
-	 keypress - mientras esta presionada la tecla
-	 */
+keyup  - cuando se suelta la tecla
+keypress - mientras esta presionada la tecla
+*/
 d.addEventListener("keydown", (e) => {
   shortcuts(e);
   moveBall(e, ".ball", ".stage");
 });
+
+darkTheme(".dark-theme-btn", "dark-mode");
