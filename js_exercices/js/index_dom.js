@@ -6,7 +6,6 @@ import scrollTopButton from "./boton_scroll.js";
 import darkTheme from "./tema_oscuro.js";
 import responsiveMedia from "./objeto_responsive.js";
 import responsiveTester from "./prueba_responsive.js";
-
 const d = document;
 
 d.addEventListener("DOMContentLoaded", (e) => {
@@ -33,6 +32,7 @@ d.addEventListener("DOMContentLoaded", (e) => {
   );
   responsiveTester("resposive-tester");
 });
+
 /* keydown - cuando se presiona la tecla
 keyup  - cuando se suelta la tecla
 keypress - mientras esta presionada la tecla
