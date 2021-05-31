@@ -7,11 +7,7 @@ import darkTheme from "./tema_oscuro.js";
 import responsiveMedia from "./objeto_responsive.js";
 import responsiveTester from "./prueba_responsive.js";
 import userDeviceInfo from "./deteccion_dispositivos.js";
-<<<<<<< HEAD
 import networkStatus from "./deteccion_red.js";
-=======
-
->>>>>>> master
 const d = document;
 
 d.addEventListener("DOMContentLoaded", (e) => {
@@ -37,11 +33,7 @@ d.addEventListener("DOMContentLoaded", (e) => {
     `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.7557477903665!2d-90.51881098464375!3d14.612985280689482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8589a22d5e112a73%3A0x3a08206ce8a72d8c!2sTorre%20del%20Reformador!5e0!3m2!1sfr!2sgt!4v1622251673876!5m2!1sfr!2sgt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`
   );
   responsiveTester("resposive-tester");
-<<<<<<< HEAD
-  userDeviceInfo("userDevice");
-=======
   userDeviceInfo("user-device");
->>>>>>> master
 });
 
 /* keydown - cuando se presiona la tecla
