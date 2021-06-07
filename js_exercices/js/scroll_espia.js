@@ -5,20 +5,22 @@ export default function scrollSpy() {
   const cb = (entries) => {
     /* console.log("entries", entries); */
     entries.forEach((entry) => {
-      const id = entry.target.getAttribute("id");
-      if (entry.Intersecting) {
-        d.querySelector(`a[data-scroll-spy][href="#${id}"]`).classList.add("active");
+      const id = entry.target.getAttribute(`id`);
+      // console.log(id);
+      if (entry.isIntersecting) {
+        d.querySelector(`a[data-scroll-spy][href="#${id}"]`).classList.add(`active`);
       } else {
         d.querySelector(`a[data-scroll-spy][href="#${id}"]`).classList.remove(
-          "active"
+          `active`
         );
       }
-      /* console.log("entry", entry); */
+      // console.log("entry", entry);
     });
   };
   const observer = new IntersectionObserver(cb, {
     //root
-    rootMargin: "-250px",
+    //rootMargin: "-250px",
+    threshold: [0.5, 0.75],
   });
   $sections.forEach((el) => observer.observe(el));
 }
