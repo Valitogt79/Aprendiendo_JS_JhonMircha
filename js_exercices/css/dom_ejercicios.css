@@ -364,7 +364,8 @@ img {
     padding: 0.75rem;
   }
 
-  .menu a:hover {
+  .menu a:hover,
+  .menu a:active {
     color: var(--second-color);
     background-color: var(--main-color);
   }
