@@ -370,7 +370,7 @@ img {
   }
 
   .scroll-top-btn {
-    right; initial;
-    left: calc(4.25rem + 1vw)
+    right: initial;
+    left: calc(4.25rem + 1vw);
   }
 }
