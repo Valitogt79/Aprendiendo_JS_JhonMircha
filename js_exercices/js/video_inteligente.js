@@ -10,6 +10,11 @@ export default function smartVideo() {
       } else {
         entry.target.pause();
       }
+
+      /* al perder el foco de la pestaña automaticamente se detiene el video */
+      w.addEventListener(`visibilitychange`, (e) =>
+        d.visibilityState === `visible` ? entry.target.play() : entry.target.pause()
+      );
     });
   };
   const observer = new IntersectionObserver(cb, { threshold: 0.5 });
