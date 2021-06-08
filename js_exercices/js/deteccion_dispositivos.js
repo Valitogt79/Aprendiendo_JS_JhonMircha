@@ -66,7 +66,7 @@ export default function userDeviceInfo(id) {
   }
 
   /* Redirecciones */
-  if (isMobile.android()) {
+  /* if (isMobile.android()) {
     window.location.href = `https://jonmircha.com`;
-  }
+  } */
 }
