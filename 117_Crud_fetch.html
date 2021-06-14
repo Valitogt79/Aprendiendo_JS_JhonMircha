@@ -11,7 +11,7 @@
     <section id="crud">
       <article>
         <h2 class="crud-title">Agregar Santos</h2>
-        <form action="crud-form">
+        <form class="crud-form">
           <input type="text" name="nombre" placeholder="Nombre" required />
           <br />
           <input
@@ -42,7 +42,7 @@
     <template id="crud-template">
       <tr>
         <td class="name"></td>
-        <td class="constellation"></td>
+        <td class="constelacion"></td>
         <td>
           <button class="edit">Editar</button>
           <button class="delete">Eliminar</button>
@@ -54,8 +54,80 @@
         $table = d.querySelector(".crud-table"),
         $form = d.querySelector(".crud-form"),
         $title = d.querySelector(".crud-title"),
-        $template = d.getelementById("crud-template").content,
+        $template = d.getElementById("crud-template").content,
         $fragment = d.createDocumentFragment();
+
+      const getAll = async () => {
+        try {
+          let res = await fetch("http://localhost:5555/santos"),
+            json = await res.json();
+          if (!res.ok) throw { status: res.status, statusText: res.statusText };
+          console.log(json);
+          json.forEach((el) => {
+            $template.querySelector(".name").textContent = el.nombre;
+            $template.querySelector(".constelacion").textContent = el.constelacion;
+            $template.querySelector(".edit").dataset.id = el.id;
+            $template.querySelector(".edit").dataset.name = el.nombre;
+            $template.querySelector(".edit").dataset.constelacion = el.constelacion;
+            $template.querySelector(".delete").dataset.id = el.id;
+
+            let $cloner = d.importNode($template, true);
+            $fragment.appendChild($cloner);
+          });
+          $table.querySelector("tbody").appendChild($fragment);
+        } catch (err) {
+          let message = err.statusText || "Ocurió un Error";
+          $table.insertAdjacentHTML(
+            "afterend",
+            `<p><b>Error ${err.status}: ${message}</b></p>`
+          );
+        }
+      };
+      d.addEventListener("DOMContentLoaded", getAll);
+
+      d.addEventListener("submit", async (e) => {
+        if (!e.target === $form) {
+          e.preventDefault();
+
+          if (!e.target.id.value) {
+            //Create POST
+            try {
+              let options = {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json; charset=utf-8",
+                  },
+                  body: JSON.stringify({
+                    nombre: e.target.nombre.value,
+                    constelacion: e.target.constelacion.value,
+                  }),
+                },
+                res = await fetch("http://localhost:5555/santos", options),
+                json = await res.json();
+
+              if (!res.ok) throw { status: res.status, statusText: res.statusText };
+            } catch (err) {
+              let message = err.statusText || "Ocurió un Error";
+              $form.insertAdjacentHTML(
+                "afterend",
+                `<p><b>Error ${err.status}:${message}</b></p>`
+              );
+            }
+          } else {
+            //Update - PUT
+          }
+        }
+      });
+
+      d.addEventListener("click", (e) => {
+        if (e.target.matches(".edit")) {
+          //alert("Presionaste el boton editar");
+          $title.textContent = "Editar Santos";
+          $form.nombre.value = e.target.dataset.name;
+          $form.constelacion.value = e.target.dataset.constelacion;
+          $form.id.value = e.target.dataset.id;
+        }
+      });
     </script>
   </body>
 </html>
