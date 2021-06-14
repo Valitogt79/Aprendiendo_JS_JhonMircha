@@ -24,6 +24,21 @@
       "id": 5,
       "nombre": "Ikki",
       "constelacion": "Fenix"
+    },
+    {
+      "nombre": "Mü",
+      "constelacion": "Aries",
+      "id": 6
+    },
+    {
+      "nombre": "Aldebaran",
+      "constelacion": "Tauro",
+      "id": 7
+    },
+    {
+      "nombre": "Saga",
+      "constelacion": "Gemenis",
+      "id": 8
     }
   ],
   "dioses": [

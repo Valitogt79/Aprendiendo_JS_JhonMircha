@@ -11,12 +11,12 @@
     <section id="crud">
       <article>
         <h2 class="crud-title">Agregar Santos</h2>
-        <form action="crud-form">
+        <form class="crud-form">
           <input type="text" name="nombre" placeholder="Nombre" required />
           <br />
           <input
             type="text"
-            name="constelation"
+            name="constelacion"
             placeholder="constelacion"
             required
             <br
@@ -42,7 +42,7 @@
     <template id="crud-template">
       <tr>
         <td class="name"></td>
-        <td class="constelation"></td>
+        <td class="constelacion"></td>
         <td>
           <button class="edit">Editar</button>
           <button class="delete">Eliminar</button>
@@ -86,10 +86,10 @@
 
             res.forEach((el) => {
               $template.querySelector(".name").textContent = el.nombre;
-              $template.querySelector(".constelation").textContent = el.constelacion;
+              $template.querySelector(".constelacion").textContent = el.constelacion;
               $template.querySelector(".edit").dataset.id = el.id;
               $template.querySelector(".edit").dataset.name = el.nombre;
-              $template.querySelector(".edit").dataset.constelation =
+              $template.querySelector(".edit").dataset.constelacion =
                 el.constelacion;
               $template.querySelector(".delete").dataset.id = el.id;
               el.constelacion;
@@ -107,6 +107,64 @@
       };
 
       d.addEventListener("DOMContentLoaded", getAll);
+
+      d.addEventListener("submit", (e) => {
+        if (e.target === $form) {
+          e.preventDefault();
+
+          if (!e.target.id.value) {
+            //post
+            ajax({
+              url: " http://localhost:5555/santos",
+              method: "POST",
+              success: (res) => location.reload(),
+              error: () =>
+                $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`),
+              data: {
+                nombre: e.target.nombre.value,
+                constelacion: e.target.constelacion.value,
+              },
+            });
+          } else {
+            //update - put
+            ajax({
+              url: `http://localhost:5555/santos/${e.target.id.value}/`,
+              method: "PUT",
+              success: (res) => location.reload(),
+              error: () =>
+                $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`),
+              data: {
+                nombre: e.target.nombre.value,
+                constelacion: e.target.constelacion.value,
+              },
+            });
+          }
+        }
+      });
+      d.addEventListener("click", (e) => {
+        if (e.target.matches(".edit")) {
+          //alert("Presionaste el boton editar");
+          $title.textContent = "Editar Santos";
+          $form.nombre.value = e.target.dataset.name;
+          $form.constelacion.value = e.target.dataset.constelacion;
+          $form.id.value = e.target.dataset.id;
+        }
+        if (e.target.matches(".delete")) {
+          let isDelete = confirm(
+            `¿Estás seguro de eliminar el id ${e.target.dataset.id}?`
+          );
+          if (isDelete) {
+            ajax({
+              //Borrando Registro
+              url: `http://localhost:5555/santos/${e.target.dataset.id}/`,
+              method: "DELETE",
+              success: (res) => location.reload(),
+              error: () => alert(err),
+              //En este caso la no se necesita un atributo data.
+            });
+          }
+        }
+      });
     </script>
   </body>
 </html>
