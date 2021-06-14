@@ -39,6 +39,11 @@
       "nombre": "Saga",
       "constelacion": "Gemenis",
       "id": 8
+    },
+    {
+      "nombre": "Aioia",
+      "constelacion": "Leo",
+      "id": 9
     }
   ],
   "dioses": [
